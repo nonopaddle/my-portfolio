@@ -10,7 +10,7 @@ import { ContactsSection } from "./components/sections/contacts";
 export default function Home() {
   const [sections, setSections] = useState<any[]>();
   const [id, setId] = useState<string>('0');
-  const [nextID, setNextID] = useState<string>('0');
+  const [scrollClick, setScrollClick] = useState<boolean>(false);
   const selected = useRef(null);
   const sectionsContainer = useRef(null);
 
@@ -22,9 +22,13 @@ export default function Home() {
       {label: 'Réalisations' , selected: false, element: <RealisationsSection section_index={3} key={3}/>},
       {label: 'Contacts' , selected: false, element: <ContactsSection section_index={4} key={4}/>}
     ]);
+    // @ts-ignore
+    sectionsContainer.current.addEventListener('scrollend', () => setScrollClick(false));
   }, []);
 
   const handleScroll = () => {
+    console.log(scrollClick);
+    if(scrollClick) return;
     if (sections && sectionsContainer.current) {
       // @ts-ignore
       const y_pos = sectionsContainer.current.scrollLeft / (window.innerWidth * sections.length);
@@ -36,8 +40,10 @@ export default function Home() {
     }
   };
 
-  const select = (id: number) => {
-    setNextID(`${id}`);
+  const select = (nextId: number) => {
+    if (id === `${nextId}`) return;
+    setScrollClick(true);
+    setId(`${nextId}`);
   };
   
   useEffect(() => {
@@ -46,14 +52,14 @@ export default function Home() {
       behavior: 'smooth',
       block: 'nearest',
     });
-  }, [nextID]);
+  }, [id]);
 
   return (
     <main className="w-full h-full sm:flex sm:flex-col">
       <Navbar section_list={sections} selected={id} select={select}/>
       <div ref={sectionsContainer} className="w-full h-full grow flex overflow-x-auto no-scrollbar snap-x snap-mandatory" onScroll={handleScroll}>
         {sections?.map((section, index) => (
-          <div ref={nextID === `${index}` ? selected : null} key={section.label} className="h-full w-full flex-none snap-center  overflow-y-auto">
+          <div ref={id === `${index}` ? selected : null} key={section.label} className="h-full w-full flex-none snap-center  overflow-y-auto">
             {section.element}
           </div>
         ))}

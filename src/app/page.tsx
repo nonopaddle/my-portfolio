@@ -1,6 +1,6 @@
 'use client'
 import {useEffect, useRef, useState} from "react";
-import { Header } from "./components/header";
+import { Navbar } from "./components/header";
 import { HomeSection } from "./components/sections/home";
 import { FormationsSection } from "./components/sections/formations";
 import { CompetencesSection } from "./components/sections/competences";
@@ -34,7 +34,6 @@ export default function Home() {
         if (y_pos >= min && y_pos < max && id != `${index}`) setId(`${index}`);
       });
     }
-    //console.log(id);
   };
 
   const select = (id: number) => {
@@ -42,7 +41,6 @@ export default function Home() {
   };
   
   useEffect(() => {
-    console.log(id, selected.current);
     // @ts-ignore
     selected.current?.scrollIntoView({
       behavior: 'smooth',
@@ -52,7 +50,7 @@ export default function Home() {
 
   return (
     <main className="w-full h-full sm:flex sm:flex-col">
-      <Header section_list={sections} selected={id} select={select}/>
+      <Navbar section_list={sections} selected={id} select={select}/>
       <div ref={sectionsContainer} className="w-full h-full grow flex overflow-x-auto no-scrollbar snap-x snap-mandatory" onScroll={handleScroll}>
         {sections?.map((section, index) => (
           <div ref={nextID === `${index}` ? selected : null} key={section.label} className="h-full w-full flex-none snap-center  overflow-y-auto">

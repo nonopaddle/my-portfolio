@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="w-full h-full">
-      <body className={inter.className + ' w-full h-full'}>{children}</body>
+      <body className={inter.className + " w-full h-full font-['Montserrat']"}>{children}</body>
     </html>
   );
 }

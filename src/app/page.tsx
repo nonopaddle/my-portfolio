@@ -8,7 +8,7 @@ import { RealisationsSection } from "./components/sections/realisations";
 import { ContactsSection } from "./components/sections/contacts";
 
 export default function Home() {
-  const [sections, setSections] = useState<any[]>();
+  const [sections, setSections] = useState<any[]>([]);
   const [id, setId] = useState<string>('0');
   const [scrollClick, setScrollClick] = useState<boolean>(false);
   const selected = useRef<HTMLDivElement>(null);
@@ -16,11 +16,11 @@ export default function Home() {
 
   useEffect(() => {
     setSections([
-      { label: 'Noé Delin', selected: false, element: <HomeSection section_index={0} key={0} /> },
-      { label: 'Formations', selected: false, element: <FormationsSection section_index={1} key={1} /> },
-      { label: 'Compétences', selected: false, element: <CompetencesSection section_index={2} key={2} /> },
-      { label: 'Réalisations', selected: false, element: <RealisationsSection section_index={3} key={3} /> },
-      { label: 'Contacts', selected: false, element: <ContactsSection section_index={4} key={4} /> }
+      { label: 'Noé Delin', selected: false, darkTheme: false, element: <HomeSection section_index={0} key={0} /> },
+      { label: 'Formations', selected: false, darkTheme: true, element: <FormationsSection section_index={1} key={1} /> },
+      { label: 'Compétences', selected: false, darkTheme: false, element: <CompetencesSection section_index={2} key={2} /> },
+      { label: 'Réalisations', selected: false, darkTheme: false, element: <RealisationsSection section_index={3} key={3} /> },
+      { label: 'Contacts', selected: false, darkTheme: false, element: <ContactsSection section_index={4} key={4} /> }
     ]);
     if (sectionsContainer?.current) {
       sectionsContainer.current.addEventListener('scrollend', () => setScrollClick(false));
@@ -32,7 +32,7 @@ export default function Home() {
     if (sections && sectionsContainer.current) {
       // @ts-ignore
       const y_pos = sectionsContainer.current.scrollLeft / (window.innerWidth * sections.length);
-      sections?.forEach((_: any, index: number) => {
+      sections?.forEach((section: any, index: number) => {
         const min = Math.trunc((index - 0.5) / sections.length * 100) / 100;
         const max = Math.trunc((index + 0.5) / sections.length * 100) / 100;
         if (y_pos >= min && y_pos < max && id != `${index}`) setId(`${index}`);

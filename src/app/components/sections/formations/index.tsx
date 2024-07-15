@@ -18,7 +18,7 @@ export const FormationsSection = (P: IFormationsSection) => {
 					<span className="text-white h-fit w-full text-[0.45rem] sm:text-[0.5rem]
 					 2xl:text-lg">2020 - 2022</span>
 					<div className="text-white h-fit w-full text-[0.55rem] sm:text-xl mt-10 flex flex-col space-y-10 under
-					 2xl:text-4xl">
+					 2xl:text-3xl">
 						<p>
 							Mes premiers pas dans le monde de l'informatique se sont fait au lycée Jean Rostand.<br/>
 							Durant mes années de 1ère et de Terminale, j'ai suivit les cours de la spécialité <b className="text-xantous">Numérique et Sciences Informatiques</b>.
@@ -35,16 +35,24 @@ export const FormationsSection = (P: IFormationsSection) => {
 				<div className="h-1/2 flex-none bg-blue-primary"/>
 				
 				<div className="flex-none h-full w-full bg-IUT parallax-[-1px+1.5] bg-cover bg-center brightness-[.33] -z-10"/>
-
 				<div className="flex-none absolute top-[180%] left-[30%] w-[40%] h-fit flex flex-col parallax-[1px+1] z-10
 					sm:left-1/3 sm:w-1/3">
 					<h1 className="text-white h-fit w-2/3 text-2xl
-					sm:text-5xl">BUT Informatique</h1>
-					<span className="text-white h-fit w-full text-[0.45rem]">2022 - Aujourd'hui</span>
-					<p className="text-white h-fit w-full text-[0.55rem] mt-10
-						sm:text-xl">
-						
-					</p>
+					sm:text-5xl 2xl:text-7xl">BUT Informatique</h1>
+					<span className="text-white h-fit w-full text-[0.45rem] sm:text-[0.5rem]
+					 2xl:text-lg">2022 - Aujourd'hui</span>
+					<div className="text-white h-fit w-full text-[0.55rem] sm:text-xl mt-10 flex flex-col space-y-10 under
+					 2xl:text-3xl">
+						<p>
+							Mes premiers pas dans le monde de l'informatique se sont fait au lycée Jean Rostand.<br/>
+							Durant mes années de 1ère et de Terminale, j'ai suivit les cours de la spécialité <b className="text-xantous">Numérique et Sciences Informatiques</b>.
+						</p>
+						<p>
+							Ces cours m'ont introduit à certaines technologies telles que <b className="text-xantous">HTML</b>, <b className="text-xantous">CSS</b>, <b className="text-xantous">SQL</b>, et <b className="text-xantous">Python</b>, grâce auquel j'ai appris les bases de l'algorithmie.
+						</p>
+					</div>
+					
+					
 				</div>
 				
 			</div>
